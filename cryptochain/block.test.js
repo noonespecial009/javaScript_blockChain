@@ -1,5 +1,5 @@
 const Block = require('./block');
-
+const { GENESIS_DATA} = require('./config');
 // jest library
 describe('Block', () => {
     const timestamp = 'a-date';
@@ -14,4 +14,18 @@ describe('Block', () => {
         expect(block.hash).toEqual(hash);
         expect(block.data).toEqual(data);
     });
+
+    describe('genesis()', () => {
+        const genesisBlock = Block.genesis();
+
+        it('returns a block instance', () => {
+            expect(genesisBlock instanceof Block).toEqual(true);
+        });
+
+        it('returns the gensis data', () => {
+            expect(genesisBlock).toEqual(GENESIS_DATA);
+        })
+    });
+
+
 });
